@@ -1,6 +1,6 @@
-// const { restart } = require("nodemon");
+const { restart } = require("nodemon");
 
-const handleRegister = (req, res, db, bcrypt, saltRounds, cors) => {
+const handleRegister = (req, res, db, bcrypt, saltRounds) => {
   const { email, name, password } = req.body
 
   if(!email || !name || !password) {
@@ -11,7 +11,7 @@ const handleRegister = (req, res, db, bcrypt, saltRounds, cors) => {
     db.transaction(trx => {
       trx.insert({
         hash: hash,
-        email: emails
+        email: email
       })
       .into('login')
       .returning('email')
