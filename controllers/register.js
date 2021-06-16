@@ -1,5 +1,3 @@
-const { restart } = require("nodemon");
-
 const handleRegister = (req, res, db, bcrypt, saltRounds) => {
   const { email, name, password } = req.body
 
